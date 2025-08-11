@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campeões de League of Legends</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Enciclopédia de League of Legends</h1>
+        <p>Clique em um campeão para ver seus detalhes</p>
+        <!-- NOVO: Barra de Pesquisa -->
+        <input type="text" id="search-input" placeholder="Pesquisar campeão por nome...">
+    </header>
+
+    <main id="champion-grid"></main>
+
+    <div id="champion-details-container" class="hidden">
+        <div id="champion-details">
+            <button id="close-button">X</button>
+            <img id="champion-splash" src="" alt="Splash Art do Campeão">
+            <h2 id="champion-name"></h2>
+            <h3 id="champion-title"></h3>
+            
+            <!-- NOVO: Container para informações meta -->
+            <div id="champion-meta">
+                <h4>Ordem das Habilidades:</h4>
+                <p id="skill-order"></p>
+            </div>
+
+            <div id="champion-abilities">
+                <!-- As habilidades serão inseridas aqui pelo JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
