@@ -63,6 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('champion-splash').src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championId}_0.jpg`;
             document.getElementById('champion-name').textContent = champion.name;
             document.getElementById('champion-title').textContent = champion.title;
+            
+            const statsLink = document.getElementById('stats-link');
+            statsLink.href = `https://u.gg/lol/champions/${championId.toLowerCase()}/build`;
     
             const skillOrderEl = document.getElementById('skill-order');
             if (skillOrderData[championId]) {
@@ -71,18 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 skillOrderEl.parentElement.style.display = 'none';
             }
-    
-            const skinsGrid = document.getElementById('skins-grid');
-            skinsGrid.innerHTML = '';
-            champion.skins.forEach(skin => {
-                if (skin.num > 0) {
-                    const skinItem = document.createElement('div');
-                    skinItem.className = 'skin-item';
-                    const skinImgUrl = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championId}_${skin.num}.jpg`;
-                    skinItem.innerHTML = `<img src="${skinImgUrl}" alt="${skin.name}"><p>${skin.name}</p>`;
-                    skinsGrid.appendChild(skinItem);
-                }
-            });
     
             const stats = champion.stats;
             document.getElementById('champion-stats').innerHTML = `
@@ -112,21 +103,27 @@ document.addEventListener('DOMContentLoaded', () => {
     
             const abilitiesContainer = document.getElementById('champion-abilities');
             abilitiesContainer.innerHTML = '';
-    
+            
+            // --- INÍCIO DA CORREÇÃO DOS VÍDEOS ---
+            const championKey = champion.key.padStart(4, '0'); // Pega a chave (ex: "131") e transforma em "0131"
+
             const passive = champion.passive;
+            const passiveVideoUrl = `https://d28xe8vt774jo5.cloudfront.net/champion-abilities/${championKey}/ability_${championKey}_P1.webm`;
             abilitiesContainer.innerHTML += `
                 <div class="ability">
                     <img src="https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/img/passive/${passive.image.full}" alt="${passive.name}">
                     <div class="ability-info">
                         <h4>${passive.name} (Passiva)</h4>
                         <p>${passive.description}</p>
+                        <video class="ability-video" autoplay loop muted playsinline src="${passiveVideoUrl}"></video>
                     </div>
                 </div>
             `;
     
             champion.spells.forEach((spell, index) => {
-                const key = ['Q', 'W', 'E', 'R'][index];
+                const key = ['Q', 'W', 'E', 'R'][index]; // Letra maiúscula para a URL do vídeo
                 const cooldowns = spell.cooldownBurn;
+                const spellVideoUrl = `https://d28xe8vt774jo5.cloudfront.net/champion-abilities/${championKey}/ability_${championKey}_${key}1.webm`;
                 abilitiesContainer.innerHTML += `
                     <div class="ability">
                         <img src="https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/img/spell/${spell.image.full}" alt="${spell.name}">
@@ -136,10 +133,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="ability-meta">
                                 <strong>Cooldown:</strong> ${cooldowns} segundos
                             </div>
+                            <video class="ability-video" autoplay loop muted playsinline src="${spellVideoUrl}"></video>
                         </div>
                     </div>
                 `;
             });
+            // --- FIM DA CORREÇÃO DOS VÍDEOS ---
             
             detailsContainer.classList.remove('hidden');
         } catch (error) {
@@ -188,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.addEventListener('input', filterChampions);
 
     closeButton.addEventListener('click', () => {
-        detailsContainer.classList.add('hidden');
+        detailsContainer.classList.remove('hidden');
     });
 
     loadChampions();

@@ -1,5 +1,5 @@
 /* ================================== */
-/* ESTILOS ORIGINAIS (O VISUAL ANTIGO)*/
+/* ESTILOS BASE E ORIGINAIS           */
 /* ================================== */
 
 /* Estilos gerais */
@@ -17,7 +17,6 @@ header {
     border-bottom: 2px solid #0a323c;
 }
 
-/* Estilos da Barra de Pesquisa */
 #search-input {
     width: 80%;
     max-width: 500px;
@@ -34,7 +33,36 @@ header {
     color: #c4b998;
 }
 
-/* Grade de campeões */
+#filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: 1px solid #c4b998;
+    background-color: transparent;
+    color: #c4b998;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.filter-btn:hover {
+    background-color: #c4b998;
+    color: #010a13;
+}
+
+.filter-btn.active {
+    background-color: #f0e6d2;
+    color: #010a13;
+    font-weight: bold;
+    border-color: #f0e6d2;
+}
+
 #champion-grid {
     display: flex;
     flex-wrap: wrap;
@@ -57,7 +85,6 @@ header {
     border-color: #f0e6d2;
 }
 
-/* Detalhes do Campeão (Modal) */
 #champion-details-container {
     position: fixed;
     top: 0;
@@ -122,7 +149,6 @@ header {
     margin-top: 0;
 }
 
-/* Informações Meta (Ordem das Habilidades) */
 #champion-meta {
     background-color: rgba(0, 0, 0, 0.2);
     border-left: 3px solid #c4b998;
@@ -142,6 +168,61 @@ header {
     margin: 0;
 }
 
+.details-section {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #0a323c;
+}
+
+.details-section h4 {
+    color: #f0e6d2;
+    margin: 0 0 15px 0;
+    font-size: 1.4em;
+}
+
+#champion-stats {
+    line-height: 1.6;
+}
+
+#champion-lore {
+    line-height: 1.5;
+    font-style: italic;
+    color: #c4b998;
+}
+
+#champion-tips ul {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+#champion-tips h5 {
+    color: #f0e6d2;
+    margin: 15px 0 5px 0;
+}
+
+/* ================================== */
+/* NOVOS ESTILOS (VÍDEOS E BOTÃO)     */
+/* ================================== */
+
+/* Estilo para o link de estatísticas */
+#external-links {
+    margin: 20px 0 0 0;
+}
+
+.stats-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0a323c;
+    color: #f0e6d2;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.stats-button:hover {
+    background-color: #1a505e;
+}
+
 /* Habilidades */
 #champion-abilities {
     margin-top: 20px;
@@ -158,6 +239,11 @@ header {
     height: 64px;
     border: 1px solid #c4b998;
     margin-right: 15px;
+    flex-shrink: 0; /* Impede que o ícone encolha */
+}
+
+.ability-info {
+    flex-grow: 1;
 }
 
 .ability-info h4 {
@@ -176,95 +262,11 @@ header {
     margin-top: 5px;
 }
 
-/* ================================== */
-/* CSS PARA AS NOVAS MELHORIAS        */
-/* ================================== */
-
-/* MELHORIA 3: Botões de Filtro */
-#filter-buttons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.filter-btn {
-    padding: 8px 16px;
-    border: 1px solid #c4b998;
-    background-color: transparent;
-    color: #c4b998;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.2s, color 0.2s;
-}
-
-.filter-btn:hover {
-    background-color: #c4b998;
-    color: #010a13;
-}
-
-.filter-btn.active {
-    background-color: #f0e6d2;
-    color: #010a13;
-    font-weight: bold;
-    border-color: #f0e6d2;
-}
-
-/* Estilo para as novas seções de detalhes */
-.details-section {
-    margin-top: 25px;
-    padding-top: 20px;
-    border-top: 1px solid #0a323c;
-}
-
-.details-section h4 {
-    color: #f0e6d2;
-    margin: 0 0 15px 0;
-    font-size: 1.4em;
-}
-
-/* MELHORIA 2: Galeria de Skins */
-#skins-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-}
-
-.skin-item {
-    text-align: center;
-    width: 220px;
-}
-
-.skin-item img {
+/* Estilo para os vídeos das habilidades */
+.ability-video {
     width: 100%;
-    border: 2px solid #c4b998;
-    border-radius: 5px;
-}
-
-.skin-item p {
-    margin-top: 5px;
-    font-size: 0.9em;
-    color: #c4b998;
-}
-
-/* MELHORIA 1: Atributos, Lore e Dicas */
-#champion-stats {
-    line-height: 1.6;
-}
-
-#champion-lore {
-    line-height: 1.5;
-    font-style: italic;
-    color: #c4b998;
-}
-
-#champion-tips ul {
-    padding-left: 20px;
-    margin: 10px 0;
-}
-#champion-tips h5 {
-    color: #f0e6d2;
-    margin: 15px 0 5px 0;
+    max-width: 320px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #0a323c;
 }

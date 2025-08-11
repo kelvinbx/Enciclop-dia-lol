@@ -15,7 +15,6 @@
         <p>Clique em um campeão para ver seus detalhes</p>
         <input type="text" id="search-input" placeholder="Pesquisar campeão por nome...">
         
-        <!-- MELHORIA 3: Botões de Filtro por Função -->
         <div id="filter-buttons">
             <button class="filter-btn active" data-tag="All">Todos</button>
             <button class="filter-btn" data-tag="Fighter">Lutador</button>
@@ -36,28 +35,27 @@
             <h2 id="champion-name"></h2>
             <h3 id="champion-title"></h3>
 
+            <!-- IDEIA 10: Placeholder para o link de estatísticas -->
+            <div id="external-links">
+                <a id="stats-link" class="stats-button" href="#" target="_blank" rel="noopener noreferrer">Ver Estatísticas no U.GG</a>
+            </div>
+
             <div id="champion-meta">
                 <h4>Ordem das Habilidades:</h4>
                 <p id="skill-order"></p>
             </div>
             
-            <!-- MELHORIA 2: Galeria de Skins -->
-            <div class="details-section" id="champion-skins-container">
-                <h4>Galeria de Skins</h4>
-                <div id="skins-grid"></div>
-            </div>
+            <!-- REMOVIDO: Galeria de Skins foi removida daqui -->
 
-            <!-- MELHORIA 1: Atributos do Campeão -->
             <div class="details-section" id="champion-stats-container">
                 <h4>Atributos Base</h4>
                 <div id="champion-stats"></div>
             </div>
 
             <div id="champion-abilities">
-                <!-- As habilidades que já existiam continuam aqui -->
+                <!-- As habilidades serão inseridas aqui, agora com vídeos -->
             </div>
             
-            <!-- MELHORIA 1: Lore e Dicas -->
             <div class="details-section" id="champion-lore-container">
                 <h4>Lore</h4>
                 <p id="champion-lore"></p>
