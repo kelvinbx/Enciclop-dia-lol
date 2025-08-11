@@ -104,8 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const abilitiesContainer = document.getElementById('champion-abilities');
             abilitiesContainer.innerHTML = '';
             
-            // --- INÍCIO DA CORREÇÃO DOS VÍDEOS ---
-            const championKey = champion.key.padStart(4, '0'); // Pega a chave (ex: "131") e transforma em "0131"
+            const championKey = champion.key.padStart(4, '0');
 
             const passive = champion.passive;
             const passiveVideoUrl = `https://d28xe8vt774jo5.cloudfront.net/champion-abilities/${championKey}/ability_${championKey}_P1.webm`;
@@ -121,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
     
             champion.spells.forEach((spell, index) => {
-                const key = ['Q', 'W', 'E', 'R'][index]; // Letra maiúscula para a URL do vídeo
+                const key = ['Q', 'W', 'E', 'R'][index];
                 const cooldowns = spell.cooldownBurn;
                 const spellVideoUrl = `https://d28xe8vt774jo5.cloudfront.net/champion-abilities/${championKey}/ability_${championKey}_${key}1.webm`;
                 abilitiesContainer.innerHTML += `
@@ -138,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
             });
-            // --- FIM DA CORREÇÃO DOS VÍDEOS ---
             
             detailsContainer.classList.remove('hidden');
         } catch (error) {
@@ -187,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.addEventListener('input', filterChampions);
 
     closeButton.addEventListener('click', () => {
-        detailsContainer.classList.remove('hidden');
+        detailsContainer.classList.add('hidden');
     });
 
     loadChampions();
